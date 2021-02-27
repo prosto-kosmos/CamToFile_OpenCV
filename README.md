@@ -40,6 +40,7 @@ The next step is to clone the repositories with OpenCV sources and create a fold
 
 Now all that remains is to complete the building and installing
 Теперь осталось лишь выполнить сборку и установку
+
     cmake -D BUILD_TIFF=ON -D WITH_CUDA=OFF -D ENABLE_AVX=OFF -D WITH_OPENGL=OFF -D WITH_OPENCL=OFF -D WITH_IPP=OFF -D BUILD_TBB=ON -D WITH_EIGEN=OFF -D WITH_V4L=OFF -D WITH_VTK=OFF -D BUILD_TESTS=OFF -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSRALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=/opt/opencv_contrib/modules/ /opt/opencv
     make -j4
     make install
@@ -48,17 +49,23 @@ Now all that remains is to complete the building and installing
     cd ~
 
 Checking the version
+
     pkg-config --modversion opencv4
 
 Copy source files
+
     scp main.cpp root@192.168.47.6:~/workdir
 
 Compile
+
     g++ ~/workrir/main.cpp -o ~/workrir/output `pkg-config --cflags --libs opencv4`
+
 or add a variable to file: /etc/envariment
+
     $CMAKE_PREFIX_PATH="/opt/opencv/release"
 
 Copy files to localhost
+
     scp -r root@192.168.47.6:~/workdir/*.mkv ~/workdir
 
 ## Links
