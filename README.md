@@ -7,12 +7,14 @@ This application records webcam video to files and transfers these files to a fi
 ## How to use
 
 First you need to connect to Orange Pi via ssh and perform updates
+
 Для начала необходимо подключиться к Orange Pi по ssh и выполнить обновления
 
     ssh root@<ip_Address_OrangePi>
     cd online_monitoring/
 
 Then you need to install the dependencies
+
 Затем необходимо установить зависимости
 
     sudo apt-get update
@@ -27,6 +29,7 @@ Then you need to install the dependencies
     sudo apt-get install libopencv-dev
 
 The next step is to clone the repositories with OpenCV sources and create a folder for the build
+
 Следующим шагом необходимо клонировать репозитории с иходниками OpenCV и создать папку для сборки
 
     sudo -s
@@ -39,6 +42,7 @@ The next step is to clone the repositories with OpenCV sources and create a fold
 
 
 Now all that remains is to complete the building and installing
+
 Теперь осталось лишь выполнить сборку и установку
 
     cmake -D BUILD_TIFF=ON -D WITH_CUDA=OFF -D ENABLE_AVX=OFF -D WITH_OPENGL=OFF -D WITH_OPENCL=OFF -D WITH_IPP=OFF -D BUILD_TBB=ON -D WITH_EIGEN=OFF -D WITH_V4L=OFF -D WITH_VTK=OFF -D BUILD_TESTS=OFF -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSRALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=/opt/opencv_contrib/modules/ /opt/opencv
@@ -60,7 +64,7 @@ Compile
 
     g++ ~/workrir/main.cpp -o ~/workrir/output `pkg-config --cflags --libs opencv4`
 
-or add a variable to file: /etc/envariment
+or add a variable to file: `/etc/envariment`
 
     $CMAKE_PREFIX_PATH="/opt/opencv/release"
 
@@ -70,7 +74,7 @@ Copy files to localhost
 
 ## Links
 
-    https://docs.opencv.org/master/d0/d76/tutorial_arm_crosscompile_with_cmake.html
-    https://www.youtube.com/watch?v=6pABIQl1ZP0
-    http://techawarey.com/programming/install-opencv-c-c-in-ubuntu-18-04-lts-step-by-step-guide/
-    https://robotclass.ru/articles/raspberrypi-3-opencv-3-install/
+    [OpenCV cross-platform compilation](https://docs.opencv.org/master/d0/d76/tutorial_arm_crosscompile_with_cmake.html)
+    [Building video tutorial](https://www.youtube.com/watch?v=6pABIQl1ZP0)
+    [one more instruction](http://techawarey.com/programming/install-opencv-c-c-in-ubuntu-18-04-lts-step-by-step-guide/)
+    [And one more for python](https://robotclass.ru/articles/raspberrypi-3-opencv-3-install/)
