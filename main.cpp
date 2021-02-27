@@ -23,7 +23,7 @@ int GetFPS(VideoCapture cap){
     //     cout<<"fps double: "<<1.0 / elapsed_seconds.count()<<endl;
     //     // int fps = round(1.0 / elapsed_seconds.count());
     // }
-    return 20;
+    return 10;
 }
 
 int main(){
@@ -32,7 +32,9 @@ int main(){
     bool paused = false;
     cap.open(camNum);
 
-    int codec = cap.get(CAP_PROP_FOURCC); // выбор кодека VideoWriter::fourcc('M', 'P', '4', '2'
+    // int codec = cap.get(CAP_PROP_FOURCC); // выбор кодека VideoWriter::fourcc('M', 'P', '4', '2'
+    // ('M','P','4','V')('M','P','E','G') ('X','V','I','D'); 
+    int codec = VideoWriter::fourcc('M','J','P','G');
     int frame_width = cap.get(CAP_PROP_FRAME_WIDTH);
     int frame_height = cap.get(CAP_PROP_FRAME_HEIGHT);
     // int fps = cap.get(CAP_PROP_FPS);
@@ -45,12 +47,14 @@ int main(){
         cout << "See camNum\n";
         return 0;
     }
-    namedWindow( "CamShift Demo", 0 );
+    namedWindow( "CamShift Demo", WindowFlags::WINDOW_FULLSCREEN);
     Mat frame;
     int frameInOneFileCounter = 0;
     int durationOneFileSeconds = 5;
     int nameFileCounter = 1;
-    std::unique_ptr<VideoWriter> video = std::make_unique<VideoWriter>("../../out" + to_string(nameFileCounter) + ".mp4", codec, fps, Size(frame_width,frame_height), true);
+    string prefix_path = "./video";
+    string media_container = ".mkv";
+    std::unique_ptr<VideoWriter> video = std::make_unique<VideoWriter>(prefix_path + to_string(nameFileCounter) + media_container, codec, fps, Size(frame_width,frame_height), true);
  
     while(true){
         if( !paused ){
@@ -60,7 +64,7 @@ int main(){
             
             // обработка
             if(fps * durationOneFileSeconds < frameInOneFileCounter){
-                video = std::make_unique<VideoWriter>("../../out" + to_string(nameFileCounter) + ".mp4", codec, fps, Size(frame_width,frame_height), true);
+                video = std::make_unique<VideoWriter>(prefix_path + to_string(nameFileCounter) + media_container, codec, fps, Size(frame_width,frame_height), true);
                 nameFileCounter+=1;
                 frameInOneFileCounter = 0;
             }
@@ -68,7 +72,7 @@ int main(){
             frameInOneFileCounter += 1;
         }
 
-        
+        resize(frame, frame, Size(960, 540), 100, 100, 1);
         imshow("CamShift Demo", frame);
 
         // Обработка нажатия клавиш
