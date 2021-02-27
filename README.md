@@ -58,7 +58,7 @@ Checking the version
 
 Copy source files
 
-    scp main.cpp root@192.168.47.6:~/workdir
+    scp main.cpp root@<ip_Address_OrangePi>:~/workdir
 
 Compile
 
@@ -74,7 +74,7 @@ Copy files to localhost
 
 ## Links
 
-    [OpenCV cross-platform compilation](https://docs.opencv.org/master/d0/d76/tutorial_arm_crosscompile_with_cmake.html)
-    [Building video tutorial](https://www.youtube.com/watch?v=6pABIQl1ZP0)
-    [one more instruction](http://techawarey.com/programming/install-opencv-c-c-in-ubuntu-18-04-lts-step-by-step-guide/)
-    [And one more for python](https://robotclass.ru/articles/raspberrypi-3-opencv-3-install/)
+[OpenCV cross-platform compilation](https://docs.opencv.org/master/d0/d76/tutorial_arm_crosscompile_with_cmake.html)
+[Building video tutorial](https://www.youtube.com/watch?v=6pABIQl1ZP0)
+[One more instruction](http://techawarey.com/programming/install-opencv-c-c-in-ubuntu-18-04-lts-step-by-step-guide/)
+[And one more for python](https://robotclass.ru/articles/raspberrypi-3-opencv-3-install/)
