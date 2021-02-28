@@ -11,7 +11,6 @@ First you need to connect to Orange Pi via ssh and perform updates
 Для начала необходимо подключиться к Orange Pi по ssh и выполнить обновления
 
     ssh root@<ip_Address_OrangePi>
-    cd online_monitoring/
 
 Then you need to install the dependencies
 
